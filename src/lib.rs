@@ -653,14 +653,16 @@ impl Player {
         let framerate = (video_stream.avg_frame_rate().numerator() as f64)
             / video_stream.avg_frame_rate().denominator() as f64;
 
-        let (width, height) = (video_decoder.width(), video_decoder.height());
+        let aspect = video_decoder.aspect_ratio();
+        let width = video_decoder.width();
+        let height = (video_decoder.height() * aspect.denominator() as u32) / aspect.numerator() as u32;
         let frame_scaler = software::scaling::Context::get(
             video_decoder.format(),
             video_decoder.width(),
             video_decoder.height(),
             Pixel::RGB24,
-            video_decoder.width(),
-            video_decoder.height(),
+            width,
+            height,
             software::scaling::flag::Flags::BILINEAR,
         )?;
 
