@@ -1,30 +1,39 @@
+[workspace]
+resolver = "2"
+members = [
+    "examples/*",
+]
+
 [package]
 name = "egui-video"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "a video library for egui"
-repository = "https://github.com/n00kii/egui-video"
+repository = "https://github.com/bu5hm4nn/egui-video"
 readme = "README.md"
-authors = ["n00kii"]
+authors = ["n00kii", "bu5hm4nn"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [features]
 from_bytes = ["dep:tempfile"]
 
-[dependencies]
+[workspace.dependencies]
 egui = "0.21.0"
-ffmpeg-next = { git = "https://github.com/n00kii/rust-ffmpeg.git" }
+eframe = "0.21.0"
+rfd = "0.11.0"
+ffmpeg-next = { git = "https://github.com/bu5hm4nn/rust-ffmpeg.git" }
+sdl2 = { git = "https://github.com/Rust-SDL2/rust-sdl2", rev = "27cd1fd67c811e06b9d997a77bb6089a1b65070d" }
+
+[dependencies]
+egui = { workspace = true }
+ffmpeg-next = { workspace = true }
+sdl2 = { workspace = true }
 anyhow = "1.0.66"
 timer = "0.2.0"
 chrono = "0.4.22"
 tempfile = {version = "3.3.0", optional = true}
-sdl2 = { version = "0.35.2", features = ["bundled"]}
 ringbuf = "0.3.1"
 parking_lot = "0.12.1"
 itertools = "0.10.5"
-
-[dev-dependencies]
-rfd = "0.11.0"
-eframe = "0.21.0"

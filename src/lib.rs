@@ -27,6 +27,7 @@ use timer::{Guard, Timer};
 
 #[cfg(feature = "from_bytes")]
 use tempfile::NamedTempFile;
+#[cfg(feature = "from_bytes")]
 use std::io::Write;
 
 fn format_duration(dur: Duration) -> String {
@@ -611,7 +612,7 @@ impl Player {
                 sample_consumer: audio_sample_consumer,
                 audio_volume: self.audio_volume.clone(),
             });
-            
+
             audio_device.resume();
             Some(AudioStreamer {
                 player_state: self.player_state.clone(),
