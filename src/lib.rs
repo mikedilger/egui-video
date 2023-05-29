@@ -655,7 +655,11 @@ impl Player {
 
         let aspect = video_decoder.aspect_ratio();
         let width = video_decoder.width();
-        let height = (video_decoder.height() * aspect.denominator() as u32) / aspect.numerator() as u32;
+        let height = if aspect.numerator() > 0 {
+            (video_decoder.height() * aspect.denominator() as u32) / aspect.numerator() as u32
+        } else {
+            video_decoder.height()
+        };
         let frame_scaler = software::scaling::Context::get(
             video_decoder.format(),
             video_decoder.width(),
