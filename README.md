@@ -1,10 +1,9 @@
 # egui-video, a video playing library for [`egui`](https://github.com/emilk/egui)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/n00kii/egui-video/blob/main/README.md)
 
-plays videos in egui from file path or from bytes using pure Rust dependencies
+plays videos in egui from file path or from bytes using ffmpeg library as the decoder backend
 
-This project was forked from https://github.com/n00kii/egui-video which used ffmpeg and sdl2,
-and modified to use pure Rust libraries.
+This project was forked from https://github.com/n00kii/egui-video which appeared abandoned.
 
 This is not a performant implementation of video playback, as it renders each frame to an `egui::ColorImage`, and all
 video decoding is done on the CPU. However it does provide a simple way to add video playback to an egui application.
