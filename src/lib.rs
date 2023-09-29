@@ -296,7 +296,10 @@ impl Player {
     /// Draw the player's ui.
     pub fn ui(&mut self, ui: &mut Ui, size: [f32; 2]) -> egui::Response {
         self.process_state();
-        let image = Image::new(self.texture_handle.id(), size).sense(Sense::click());
+        let image = Image::from_texture(&self.texture_handle)
+            .max_size(size.into())
+            .maintain_aspect_ratio(true)
+            .sense(Sense::click());
         let response = ui.add(image);
         self.render_ui(ui, &response);
         response
@@ -305,7 +308,10 @@ impl Player {
     /// Draw the player's ui with a specific rect.
     pub fn ui_at(&mut self, ui: &mut Ui, rect: Rect) -> egui::Response {
         self.process_state();
-        let image = Image::new(self.texture_handle.id(), rect.size()).sense(Sense::click());
+        let image = Image::from_texture(&self.texture_handle)
+            .max_size(rect.size())
+            .maintain_aspect_ratio(true)
+            .sense(Sense::click());
         let response = ui.put(rect, image);
         self.render_ui(ui, &response);
         response
@@ -448,7 +454,7 @@ impl Player {
 
             let mut shadow_rect = playback_response.rect;
             shadow_rect.set_top(shadow_rect.bottom() - seekbar_offset - 10.);
-            let shadow_mesh = shadow.tessellate(shadow_rect, Rounding::none());
+            let shadow_mesh = shadow.tessellate(shadow_rect, Rounding::ZERO);
 
             let fullseekbar_color = Color32::GRAY.linear_multiply(seekbar_anim_frac);
             let seekbar_color = Color32::WHITE.linear_multiply(seekbar_anim_frac);
@@ -457,11 +463,11 @@ impl Player {
 
             ui.painter().rect_filled(
                 fullseekbar_rect,
-                Rounding::none(),
+                Rounding::ZERO,
                 fullseekbar_color.linear_multiply(0.5),
             );
             ui.painter()
-                .rect_filled(seekbar_rect, Rounding::none(), seekbar_color);
+                .rect_filled(seekbar_rect, Rounding::ZERO, seekbar_color);
             ui.painter().text(
                 pause_icon_pos,
                 Align2::LEFT_BOTTOM,
