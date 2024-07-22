@@ -20,8 +20,8 @@ authors = ["n00kii", "bu5hm4nn"]
 from_bytes = ["dep:tempfile"]
 
 [workspace.dependencies]
-egui = "^0.26.0"
-eframe = "^0.26.0"
+egui = "^0.28.0"
+eframe = "^0.28.0"
 rfd = "0.11.0"
 ffmpeg-next = { git = "https://github.com/mikedilger/rust-ffmpeg.git", rev = "6c51d6d6cdf7ca13a5600ba7eb9c6f4876b84344" }
 sdl2 = { git = "https://github.com/Rust-SDL2/rust-sdl2", rev = "f2f1e29a416bcc22f2faf411866db2c8d9536308", features = [ "bundled" ] }

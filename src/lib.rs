@@ -5,7 +5,6 @@
 extern crate ffmpeg_next as ffmpeg;
 use anyhow::Result;
 use chrono::{DateTime, Duration, Utc};
-use egui::epaint::Shadow;
 use egui::{
     vec2, Align2, Color32, ColorImage, FontId, Image, Rect, Response, Rounding, Sense,
     TextureHandle, TextureOptions, Ui,
@@ -449,12 +448,12 @@ impl Player {
             let mut duration_text_font_id = FontId::default();
             duration_text_font_id.size = 14.;
 
-            let mut shadow = Shadow::big_light();
+            let mut shadow = ui.style().visuals.popup_shadow;
             shadow.color = shadow.color.linear_multiply(seekbar_anim_frac);
 
             let mut shadow_rect = playback_response.rect;
             shadow_rect.set_top(shadow_rect.bottom() - seekbar_offset - 10.);
-            let shadow_mesh = shadow.tessellate(shadow_rect, Rounding::ZERO);
+            let shadow_mesh = shadow.as_shape(shadow_rect, Rounding::ZERO);
 
             let fullseekbar_color = Color32::GRAY.linear_multiply(seekbar_anim_frac);
             let seekbar_color = Color32::WHITE.linear_multiply(seekbar_anim_frac);

@@ -6,7 +6,7 @@ fn main() {
     let _ = eframe::run_native(
         "app",
         NativeOptions::default(),
-        Box::new(|_| Box::new(App::default())),
+        Box::new(|_| Ok(Box::new(App::default()))),
     );
 }
 struct App {
