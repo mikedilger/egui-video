@@ -30,7 +30,10 @@ use tempfile::NamedTempFile;
 use std::io::Write;
 
 fn format_duration(dur: Duration) -> String {
-    let dt = DateTime::<Utc>::from(UNIX_EPOCH) + dur;
+    let dt = match DateTime::<Utc>::from(UNIX_EPOCH).checked_add_signed(dur) {
+        Some(dt) => dt,
+        None => return "!!:!!:!!".to_string()
+    };
     if dt.format("%H").to_string().parse::<i64>().unwrap() > 0 {
         dt.format("%H:%M:%S").to_string()
     } else {
