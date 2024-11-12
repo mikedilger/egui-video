@@ -23,7 +23,7 @@ from_bytes = ["dep:tempfile"]
 egui = { git = "https://github.com/bu5hm4nn/egui", rev = "f40370c48ae2e07d2bc1d7ec33d094d29dc34e70", features = [ "default" ] }
 eframe = { git = "https://github.com/bu5hm4nn/egui", rev = "f40370c48ae2e07d2bc1d7ec33d094d29dc34e70", features = [ "default" ] }
 rfd = "0.11.0"
-ffmpeg-next = { git = "https://github.com/mikedilger/rust-ffmpeg.git", rev = "8974928ecf53e69777f85ee5c8780c907b7aa0a4" }
+ffmpeg-next = { git = "https://github.com/mikedilger/rust-ffmpeg.git", rev = "2f5d8a3714247243b892d7927bad36e98c1aeb06" }
 sdl2 = { version = "0.37", features = [ "bundled" ] }
 
 [dependencies]
