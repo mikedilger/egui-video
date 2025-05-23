@@ -20,8 +20,8 @@ authors = ["n00kii", "bu5hm4nn"]
 from_bytes = ["dep:tempfile"]
 
 [workspace.dependencies]
-egui = { git = "https://github.com/mikedilger/egui", rev = "edc28711696ca81d5b322f94419b465d06a84b50", features = [ "default" ] }
-eframe = { git = "https://github.com/mikedilger/egui", rev = "edc28711696ca81d5b322f94419b465d06a84b50", features = [ "default" ] }
+egui = { git = "https://github.com/mikedilger/egui", rev = "20d9aaf91f3f792c53ce252fd8bc8cc4bdc51f78", features = [ "default" ] }
+eframe = { git = "https://github.com/mikedilger/egui", rev = "20d9aaf91f3f792c53ce252fd8bc8cc4bdc51f78", features = [ "default" ] }
 rfd = "0.11.0"
 ffmpeg-next = { git = "https://github.com/mikedilger/rust-ffmpeg.git", rev = "2f5d8a3714247243b892d7927bad36e98c1aeb06" }
 sdl2 = { version = "0.37", features = [ "bundled" ] }

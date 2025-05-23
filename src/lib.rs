@@ -552,12 +552,12 @@ impl Player {
 
                 ui.painter().rect_filled(
                     sound_slider_rect,
-                    Rounding::same(5.),
+                    Rounding::same(5),
                     sound_slider_bg_color,
                 );
 
                 ui.painter()
-                    .rect_filled(sound_bar_rect, Rounding::same(5.), sound_bar_color);
+                    .rect_filled(sound_bar_rect, Rounding::same(5), sound_bar_color);
                 let sound_slider_resp = ui.interact(
                     sound_slider_rect,
                     playback_response.id.with("sound_slider_sense"),
